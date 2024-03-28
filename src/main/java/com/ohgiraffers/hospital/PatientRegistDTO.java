@@ -2,22 +2,29 @@ package com.ohgiraffers.hospital;
 
 public class PatientRegistDTO {
 
-    private int patientNo;
-    private String patientName;
-    private String phone;
-    private String address;
-    private String chiefComplaint;
-    private String specialist;
+    private int patientNo;              // 환자 번호
+    private String patientName;         // 환자 이름
+    private String phone;               // 연락처
+    private String address;             // 주소
+    private String chiefComplaint;      // 주요 호소 증상
+    private int chiefComplaintNo;       // 주요 호소 증상 번호
+    private String specialist;          // 주치의
 
     public PatientRegistDTO() {
     }
 
-    public PatientRegistDTO(int patientNo, String patientName, String phone, String address, String chiefComplaint, String specialist) {
+    public PatientRegistDTO(int patientNo, int chiefComplaintNo) {
+        this.patientNo = patientNo;
+        this.chiefComplaintNo = chiefComplaintNo;
+    }
+
+    public PatientRegistDTO(int patientNo, String patientName, String phone, String address, String chiefComplaint, int chiefComplaintNo, String specialist) {
         this.patientNo = patientNo;
         this.patientName = patientName;
         this.phone = phone;
         this.address = address;
         this.chiefComplaint = chiefComplaint;
+        this.chiefComplaintNo = chiefComplaintNo;
         this.specialist = specialist;
     }
 
@@ -69,6 +76,14 @@ public class PatientRegistDTO {
         this.specialist = specialist;
     }
 
+    public int getChiefComplaintNo() {
+        return chiefComplaintNo;
+    }
+
+    public void setChiefComplaintNo(int chiefComplaintNo) {
+        this.chiefComplaintNo = chiefComplaintNo;
+    }
+
     @Override
     public String toString() {
         return "PatientRegistDTO{" +
@@ -77,6 +92,7 @@ public class PatientRegistDTO {
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", chiefComplaint='" + chiefComplaint + '\'' +
+                ", chiefComplaintNo=" + chiefComplaintNo +
                 ", specialist='" + specialist + '\'' +
                 '}';
     }

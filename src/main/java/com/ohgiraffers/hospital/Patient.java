@@ -1,17 +1,13 @@
 package com.ohgiraffers.hospital;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "patient")
 public class Patient {
 
-    @Id
-    @Column(name = "patient_no")
-    private int patientNo;
+    @EmbeddedId
+    private PatientCC patientCCInfo;
 
     @Column(name = "patient_name")
     private String patientName;
@@ -31,4 +27,36 @@ public class Patient {
     protected Patient() {
     }
 
+    public Patient(PatientCC patientCCInfo, String patientName, String phone, String address, String chiefComplaint, String specialist) {
+        this.patientCCInfo = patientCCInfo;
+        this.patientName = patientName;
+        this.phone = phone;
+        this.address = address;
+        this.chiefComplaint = chiefComplaint;
+        this.specialist = specialist;
+    }
+
+    public PatientCC getPatientCCInfo() {
+        return patientCCInfo;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getChiefComplaint() {
+        return chiefComplaint;
+    }
+
+    public String getSpecialist() {
+        return specialist;
+    }
 }
